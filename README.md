@@ -11,8 +11,8 @@ npm run preview    # serve the build
 ```
 Needs Node.js 18 or newer.
 
-## Sign-in
-The app opens on a demo sign-in screen. Enter any valid email address and a password of at least 6 characters to view the dashboard and simulator. The demo saves only the email in `sessionStorage` for the current browser tab; it does not verify credentials or store the password.
+## Sign-in and sign-up
+The app opens on a demo sign-in screen. Use **Create an account** to open the sign-up form, where a valid email address and matching passwords of at least 6 characters start a demo session. The app saves only the email in `sessionStorage` for the current browser tab; it does not verify credentials, retain account records, or store passwords. Sign-in likewise accepts any valid email and password.
 
 This is a frontend-only demonstration, not production authentication. Do not use it to protect real accounts or data. Connect a trusted authentication provider or backend before deploying with protected content.
 

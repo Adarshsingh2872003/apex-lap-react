@@ -139,6 +139,10 @@ footer{margin-top:clamp(48px,8vw,96px);padding:28px 0 36px;border-top:1.5px soli
 .password-field input{padding-right:66px}
 .password-toggle{position:absolute;top:50%;right:12px;transform:translateY(-50%);padding:6px;border:0;background:transparent;color:var(--mute);font-size:.84rem}
 .auth-submit{width:100%;display:flex;align-items:center;justify-content:space-between;margin-top:24px;text-align:left}
+.auth-mode-toggle{margin:18px 0 0;color:var(--mute);font-size:.9rem;text-align:center}
+.auth-mode-toggle button{padding:0;border:0;background:transparent;color:var(--orange);font:inherit;font-weight:700}
+.auth-mode-toggle button:hover{text-decoration:underline}
+.auth-error{margin:14px 0 0;color:#c5362b;font-size:.9rem}
 .demo-notice{margin:18px 0 0;padding:12px 14px;border-radius:10px;background:var(--bg);color:var(--mute);font-size:.82rem}
 .demo-notice strong{color:var(--ink)}
 .auth-legal{max-width:390px;margin:24px auto 0;color:var(--mute);font-size:.78rem;text-align:center}
