@@ -9,12 +9,17 @@ export default function AuthScreen({ onSignIn }) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const email = String(form.get('email')).trim().toLowerCase();
+    const name = String(form.get('name') || '').trim();
+    if (isSignUp && !name) {
+      setError('Please enter your name.');
+      return;
+    }
     if (isSignUp && form.get('password') !== form.get('confirm-password')) {
       setError('Passwords do not match.');
       return;
     }
     setError('');
-    onSignIn(email);
+    onSignIn(email, isSignUp ? name : '');
   };
 
   return (
@@ -33,6 +38,12 @@ export default function AuthScreen({ onSignIn }) {
           <p className="eyebrow">WELCOME TO THE GRID</p>
           <h2 id="auth-title">{isSignUp ? 'Create account' : 'Sign in'}</h2>
           <p className="auth-intro">{isSignUp ? 'Create an account to get on the grid.' : 'Sign in to open your racing dashboard.'}</p>
+          {isSignUp && (
+            <>
+              <label htmlFor="auth-name">Full name</label>
+              <input id="auth-name" name="name" type="text" autoComplete="name" maxLength="100" placeholder="Your name" required />
+            </>
+          )}
           <label htmlFor="auth-email">Email address</label>
           <input id="auth-email" name="email" type="email" autoComplete="email" placeholder="you@example.com" required />
           <label htmlFor="auth-password">Password</label>

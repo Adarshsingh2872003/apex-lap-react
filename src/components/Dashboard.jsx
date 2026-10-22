@@ -3,15 +3,15 @@ import { LAPS } from '../lib/engine.js';
 
 const fastestCar = CARS.reduce((fastest, car) => car.top > fastest.top ? car : fastest, CARS[0]);
 
-export default function Dashboard({ email }) {
-  const name = email.split('@')[0];
+export default function Dashboard({ email, name }) {
+  const displayName = name || email.split('@')[0];
 
   return (
     <section className="dashboard" id="dashboard" aria-labelledby="dashboard-title">
       <div className="dashboard-heading">
         <div>
           <p className="eyebrow">YOUR RACE CONTROL</p>
-          <h1 id="dashboard-title">Welcome back, {name}.</h1>
+          <h1 id="dashboard-title">Welcome back, {displayName}.</h1>
           <p className="lede">The grid is ready. Pick a session and make every lap count.</p>
         </div>
         <a className="btn dashboard-cta" href="#race">Start a race <span aria-hidden="true">↗</span></a>

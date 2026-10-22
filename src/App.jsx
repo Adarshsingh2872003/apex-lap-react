@@ -8,18 +8,27 @@ import Dashboard from './components/Dashboard.jsx';
 export default function App() {
   const [car, setCar] = useState(0);
   const [user, setUser] = useState(() => sessionStorage.getItem('apex-lap-demo-user') || '');
+  const [userName, setUserName] = useState(() => sessionStorage.getItem('apex-lap-demo-name') || '');
   const toggleTheme = () => {
     const r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
     r.dataset.theme = dark ? 'light' : 'dark';
   };
   const view = i => { setCar(i); document.getElementById('showroom').scrollIntoView({ behavior: 'smooth' }); };
-  const signIn = email => {
+  const signIn = (email, name = '') => {
     sessionStorage.setItem('apex-lap-demo-user', email);
+    if (name) {
+      sessionStorage.setItem('apex-lap-demo-name', name);
+    } else {
+      sessionStorage.removeItem('apex-lap-demo-name');
+    }
     setUser(email);
+    setUserName(name);
   };
   const signOut = () => {
     sessionStorage.removeItem('apex-lap-demo-user');
+    sessionStorage.removeItem('apex-lap-demo-name');
     setUser('');
+    setUserName('');
   };
 
   if (!user) return <AuthScreen onSignIn={signIn} />;
@@ -36,7 +45,7 @@ export default function App() {
         </div>
       </header>
       <main id="top">
-        <Dashboard email={user} />
+        <Dashboard email={user} name={userName} />
         <section className="race-home" aria-labelledby="race-heading">
           <h2 className="big" id="race-heading">Six cars. Six laps. Pit stops decide it.</h2>
           <p className="lede">Start the race, switch on rain, and tap a driver to follow their speed trace and tyre wear. Then inspect the cars in 3D.</p>
