@@ -40,7 +40,7 @@ export default function App() {
         <nav><a href="#dashboard">Dashboard</a><a href="#race">Race</a><a href="#showroom">Showroom</a><a href="#garage">Garage</a>
           <button className="icon" onClick={toggleTheme} aria-label="Switch light or dark theme">◐</button></nav>
         <div className="account">
-          <span className="account-email">{user}</span>
+          <span className="account-name">{userName || user}</span>
           <button className="signout" onClick={signOut}>Sign out</button>
         </div>
       </header>
